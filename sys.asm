@@ -19,23 +19,23 @@
 %endmacro
 
 %macro sys.exit 1
-    mov eax, SYSCALL_EXIT
     mov ebx, %1 ; return code
+    mov eax, SYSCALL_EXIT
     call_kernel
 %endmacro
 
 %macro sys.write 3
-    mov eax, SYSCALL_WRITE
-    mov ebx, %1 ; file descriptor
-    mov ecx, %2 ; message
     mov edx, %3 ; message length
+    mov ecx, %2 ; message
+    mov ebx, %1 ; file descriptor
+    mov eax, SYSCALL_WRITE
     call_kernel
 %endmacro
 
 %macro sys.read 3
-    mov eax, SYSCALL_READ
-    mov ebx, %1 ; file descriptor
-    mov ecx, %2 ; buffer
     mov edx, %3 ; buffer size
+    mov ecx, %2 ; buffer
+    mov ebx, %1 ; file descriptor
+    mov eax, SYSCALL_READ
     call_kernel
 %endmacro
