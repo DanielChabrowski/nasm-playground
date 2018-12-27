@@ -4,6 +4,6 @@ set -uae
 
 mkdir -p build
 
-nasm -felf64 -o build/main.o main.asm
-ld -g -o build/main build/main.o
+nasm -f elf -o build/main.o main.asm
+ld -m elf_i386 -g -o build/main build/main.o
 ./build/main
